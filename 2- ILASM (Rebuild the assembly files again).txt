@@ -1,0 +1,4 @@
+To rebuilt the IL files again and get the *.exe files do the following
+1- Open the Command Prompt of VS from the start menu as adminstrator
+2- Write the command: ILASM.exe + (*.iL) file path
+3- Navigate to the IL file folder and you'll see the (*.exe file|*.dll)
