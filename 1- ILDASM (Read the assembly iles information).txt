@@ -1,0 +1,5 @@
+To get the de assembly files and to read the assembly files information do the following
+1- Build the Application
+2- Navigate to the Debug folder
+3- Open the Command Prompt of VS from the start menu as adminstrator
+4- Write the command: ILDASM.exe + (*.exe| *.dll) file path
