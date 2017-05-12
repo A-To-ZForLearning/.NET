@@ -1,0 +1,54 @@
+To deploy an assembly to the GAC: Global Assembly Cache, the assembly must be named as a strong assembly 
+To name an assembly with a strong naming, the assembly must be named with pair of private and public key
+
+The assembly files located in the properities foleder \HashTablesApp\HashTablesA\Properties
+and you'll get these information in the assembly files
+
+From Here
+-------------
+-------------
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("HashTablesApp")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("HashTablesApp")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("0d9d7bd3-259c-4e59-b9fa-a673f5c839c3")]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Build and Revision Numbers
+// by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.0.*")] // First digit represent the major version and the 2nd digit represents the minor version and the * represent the last 2 information
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+ 
+To Here
+---------
+---------
+Also we can add this line after creating the public key token, but we need to assign our application with 
+a public key pair and we can generate that key in this way:
+1- Use the strong key tool
+2- Open the VS cmd as adminstrator 
+3- use the command sn.ex -k (path to put the key like (C:\keyname.snk))// sn mean strong key and -k refers to the key pair that we want to generate 
+4- add this line to the code above [assembly: AssemblyKeyFile("c:\\mySNKey.snk")]
+5- Only assemblies with a strong naming could be deploy in GAC: Global Assembly Cach
+6-
+
