@@ -1,0 +1,115 @@
+﻿To add a *.dll file (Assembly Files | library Files) do the following
+1- Add new projetc or Item ---> ClassLibrary
+2- We have to choose the .Net Class Library. Otherwise, we will not get the properities folder nor the assemblyInfoFile.cs
+2- In the Application Project choose to add a new reference 
+3- Brows to the file location 
+4- Rebuild the application
+5- This operation will copy the classlibrary into that project only and we have to repeat that every time we need to use same class library
+6- We copied that into our application because there ius a property enabled us to do that, which copy local (see 2.png iamge)
+7- We can set that property to a False value 
+8- If we wanted to make our class library global we have to add it to the GAC (Global Assembly Cache)
+9- In this way, there is no need to copy that class library to our projects
+10- To install our assembly to the GAC we have 2 options
+    1-  Drag and Drop
+	2- Use the GAC tool utility (GacUtil.exe)
+11- Before that, we have to name our assembly file with a strong name using the prive/public key pair using the sn.exe tool in the VS cmd
+12- To locate the *.dll file, we have to navigate to *\Projects\GAC(Global_Assembly_Cache)\MyClassLibrary\bin\Debug\netstandard1.4
+13- We will find the file (MyClassLibrary.dll), that we need to deploy to the GAC
+14- OPen cmd and navigate to the *.dll file location using cd command
+15- use this command (>Gacutil.exe -i *.dll)
+16- This is the result without adding the key pair:
+
+C:\Users\Nazar Al-Wattar\Documents\Visual Studio 2017\Projects\GAC(Global_Assembly_Cache)\MyClassLibrary\bin\Debug\netstandard1.4>gacutil.exe -i MyClassLibrary.dll
+
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Failure adding assembly to the cache: Attempt to install an assembly without a strong name
+----------------------------------------------------------------------------------------------
+C:\Users\Nazar Al-Wattar\Documents\Visual Studio 2017\Projects\GAC(Global_Assembly_Cache)\MyClassLibrary\bin\Debug\netstandard1.4>
+
+17- We have to use the strong name way that we generated in the previous file 
+18- After creating the GAC assembly as it's in picture 3
+-------------------------------------------------------------------
+C:\Windows\System32>cd C:\Users\Nazar Al-Wattar\Documents\visual studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\bin\Debug
+
+C:\Users\Nazar Al-Wattar\Documents\Visual Studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\bin\Debug>gacutil.exe -i ClassLibrary.dll
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Assembly successfully added to the cache
+--------------------------------------------------------------------
+
+19- It'll located in this path
+    C:\Windows\Microsoft.net\assembly\GAC_MSIL
+	as it shows in picture 4
+
+---------------------------------------------------------------------
+C:\Windows\System32>gacutil /l ClassLibrary
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+The Global Assembly Cache contains the following assemblies:
+  ClassLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1c95f54af06a3279, processorArchitecture=MSIL
+
+Number of items = 1
+
+C:\Windows\System32>
+-----------------------------------------------------------------------
+
+20- To uninstall the GAC Assembly file we write this command
+gacutil -u assemblyfilename (without the extension dll like gacutil -u ClassLibrary)
+
+------------------------------------------------------------------------
+C:\Windows\System32>gacutil -u Classlibrary
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+
+Assembly: Classlibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1c95f54af06a3279, processorArchitecture=MSIL
+Uninstalled: Classlibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1c95f54af06a3279, processorArchitecture=MSIL
+Number of assemblies uninstalled = 1
+Number of failures = 0
+
+C:\Windows\System32>
+------------------------------------------------------------------------
+
+21- If we change the Target Framework for the class Library from 4.5 to 3.5-2.5 the path will be 
+ C:\Windows\assembly\GAC_MSIL
+
+22- if we change the assembly version from 1.0.0.0 to any other version like 2.0.0.0
+it will create another assembly file within the same folder, but with different version number
+like it's in picture 5
+
+23- If we have 2 assemblies with the same name, but different versions, we need to specify the version 
+to avoid uninstall both like this command
+
+-------------------------------------------------------------------------
+
+C:\Users\Nazar Al-Wattar\Documents\Visual Studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\bin\Debug>
+gacutil -u Classlibrary,Version=1.0.0.0,Culture=neutral,PublicKeyToken=1c95f54af06a3279,processorArchitecture=MSIL
+-------------------------------------------------------------------------------------------------------------------
+
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+
+Assembly: Classlibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1c95f54af06a3279, processorArchitecture=MSIL
+Uninstalled: Classlibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1c95f54af06a3279, processorArchitecture=MSIL
+Number of assemblies uninstalled = 1
+Number of failures = 0
+----------------------------------------------------------------------------
+
+24- Very important not to leave any space between the properities. Otherwise you get nothing like this
+
+-------------------------------------------------------------
+
+
+C:\Users\Nazar Al-Wattar\Documents\Visual Studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\bin\Debug>gacutil -u Classlibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1c95f54af06a3279, processorArchitecture=MSIL
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Unknown option: Version=1.0.0.0,
+
+-------------------------------------------------------------

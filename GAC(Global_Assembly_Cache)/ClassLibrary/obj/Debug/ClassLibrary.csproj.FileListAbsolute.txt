@@ -1,0 +1,5 @@
+C:\Users\Nazar Al-Wattar\documents\visual studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\Nazar Al-Wattar\documents\visual studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\Nazar Al-Wattar\documents\visual studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Nazar Al-Wattar\documents\visual studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\Nazar Al-Wattar\documents\visual studio 2017\Projects\GAC(Global_Assembly_Cache)\ClassLibrary\obj\Debug\ClassLibrary.pdb
