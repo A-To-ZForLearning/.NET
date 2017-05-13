@@ -4,3 +4,5 @@ dll Hell Problem
  A- Strong namely the assembly using the pair key 
  B- Install the assembly that strongly named into the GAC
  C- Upgrade the assembly without any problem
+ 
+2- Clean a Solution means remove any asembly files from all applications in the solution 
