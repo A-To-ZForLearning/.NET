@@ -1,0 +1,6 @@
+dll Hell Problem
+1- To solve the upgrade problem that may remove the od version of the assembly, we have to do the following
+
+ A- Strong namely the assembly using the pair key 
+ B- Install the assembly that strongly named into the GAC
+ C- Upgrade the assembly without any problem
