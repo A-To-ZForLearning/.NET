@@ -1,0 +1,13 @@
+Important Notes
+1- If the assembly file were weakly named, then changing the version won't effect on the exe file if it has the same
+structure and methods
+
+2- If the assembly file were strongly named with a pair of public/private keys, then changing the version will effect on the 
+execution and the application will throw an exception
+
+3- If we installed the assembly into the GAC (Global Assembly Cache), the execution won't effected even if we deleted 
+the assembly file (*.dll) from the application folder, because the application will start search about the assembly 
+in this order
+1- Looking into the GAC first, if it didn't find it
+2- Looking into the Configuration file of the application to search any link or direction
+3- looking into the application folder, if it didn't find the assembly, then it will through an exception
